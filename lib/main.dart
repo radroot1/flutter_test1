@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'tabs/first.dart' as first;
-import 'tabs/randomizer.dart' as randomizer;
+import 'tabs/listView.dart' as listView;
+import 'tabs/counter.dart' as counterView;
 
 void main() {
   runApp(MyApp());
@@ -61,11 +62,12 @@ class _HomePageState extends State<HomePage>
             child:first.FirstRoute()
           ),
           new Container(
-            color: Colors.orange,
-            child: randomizer.Page()
+            color: Colors.white,
+            child: listView.Page()
           ),
           new Container(
-            color: Colors.lightGreen,
+            color: Colors.white,
+            child: counterView.Page()
           ),
           new Container(
             color: Colors.red,
