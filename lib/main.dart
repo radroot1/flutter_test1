@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'tabs/first.dart' as first;
+import 'tabs/navTest.dart' as navTest;
 import 'tabs/listView.dart' as listView;
 import 'tabs/counter.dart' as counterView;
+import 'tabs/animationsList.dart' as animationsList;
 
 void main() {
   runApp(MyApp());
@@ -59,7 +60,7 @@ class _HomePageState extends State<HomePage>
         children: [
           new Container(
             color: Colors.yellow,
-            child:first.FirstRoute()
+            child:counterView.Page()
           ),
           new Container(
             color: Colors.white,
@@ -67,10 +68,11 @@ class _HomePageState extends State<HomePage>
           ),
           new Container(
             color: Colors.white,
-            child: counterView.Page()
+            child: navTest.FirstRoute()
           ),
           new Container(
             color: Colors.red,
+            child:animationsList.ListView()
           ),
         ],
         controller: _tabController,

@@ -60,12 +60,10 @@ class AltRoute extends StatelessWidget {
       appBar: AppBar(
         title: Text("Second Route"),
       ),
-      body: Center(
-        child: Column(
-            children:[
-              Text('SwiftUI sucks', style: TextStyle(fontSize: 18.0)),
-            ]
-        )
+      body: ListView(
+        children:[
+          Center(child:Text('SwiftUI sucks', style: TextStyle(fontSize: 18.0))),
+        ]
       ),
     );
   }
