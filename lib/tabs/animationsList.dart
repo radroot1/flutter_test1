@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'animations/first.dart' as first;
+import 'animations/second.dart' as second;
 
 class ListView extends StatelessWidget {
   @override
@@ -25,7 +26,7 @@ class ListView extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => first.Page()),
+                    MaterialPageRoute(builder: (context) => second.LogoApp()),
                   );
                 },
               ),
