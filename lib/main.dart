@@ -1,55 +1,119 @@
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(StartPage());
+}
 
-class MyApp extends StatelessWidget {
+class StartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Startua Name Generator',
-      home: RandomWords(),
+    return new MaterialApp(
+      title: "New Task",
+      debugShowCheckedModeBanner: false,
+      home: new HomePage(),
     );
   }
 }
 
-class RandomWords extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  RandomWordsState createState() => RandomWordsState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class RandomWordsState extends State<RandomWords> {
-  final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18.0);
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
+
+  @override
+  void initState() {
+    _tabController = new TabController(length: 4, vsync: this);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      bottomNavigationBar: Material(
+        child: TabBar(
+          tabs: <Tab>[
+            Tab(
+              icon: Icon(Icons.person),
+            ),
+            Tab(
+              icon: Icon(Icons.email),
+            ),
+            Tab(
+              icon: Icon(Icons.access_time),
+            ),
+            Tab(
+              icon: Icon(Icons.adjust),
+            ),
+          ],
+          controller: _tabController,
+        ),
+        color: Colors.blue,
+      ),
+      body: TabBarView(
+        children: [
+          new Container(
+            color: Colors.yellow,
+            child:FirstRoute()
+          ),
+          new Container(
+            color: Colors.orange,
+          ),
+          new Container(
+            color: Colors.lightGreen,
+          ),
+          new Container(
+            color: Colors.red,
+          ),
+        ],
+        controller: _tabController,
+      ),
+    );
+  }
+}
+
+
+
+class FirstRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Startup Name Generator'),
+        title: Text('First Route'),
       ),
-      body: _buildSuggestions(),
-    );
-  }
-  Widget _buildSuggestions() {
-    return ListView.builder(
-        padding: const EdgeInsets.all(16.0),
-        itemBuilder: /*1*/ (context, i) {
-          if (i.isOdd) return Divider(); /*2*/
-
-          final index = i ~/ 2; /*3*/
-          if (index >= _suggestions.length) {
-            _suggestions.addAll(generateWordPairs().take(10)); /*4*/
-          }
-          return _buildRow(_suggestions[index]);
-        });
-  }
-  Widget _buildRow(WordPair pair) {
-    return ListTile(
-      title: Text(
-        pair.asPascalCase,
-        style: _biggerFont,
+      body: Center(
+        child: RaisedButton(
+          child: Text('Open route'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SecondRoute()),
+            );
+          },
+        ),
       ),
     );
   }
 }
 
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Second Route"),
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
