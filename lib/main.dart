@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'tabs/first.dart' as first;
+import 'tabs/randomizer.dart' as randomizer;
 
 void main() {
-  runApp(StartPage());
+  runApp(MyApp());
 }
 
-class StartPage extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: "New Task",
-      debugShowCheckedModeBanner: false,
       home: new HomePage(),
     );
   }
@@ -57,10 +58,11 @@ class _HomePageState extends State<HomePage>
         children: [
           new Container(
             color: Colors.yellow,
-            child:FirstRoute()
+            child:first.FirstRoute()
           ),
           new Container(
             color: Colors.orange,
+            child: randomizer.Page()
           ),
           new Container(
             color: Colors.lightGreen,
@@ -70,49 +72,6 @@ class _HomePageState extends State<HomePage>
           ),
         ],
         controller: _tabController,
-      ),
-    );
-  }
-}
-
-
-
-class FirstRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('First Route'),
-      ),
-      body: Center(
-        child: RaisedButton(
-          child: Text('Open route'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SecondRoute()),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class SecondRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Second Route"),
-      ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Go back!'),
-        ),
       ),
     );
   }
