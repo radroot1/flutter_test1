@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'tabs/navTest.dart' as navTest;
 import 'tabs/listView.dart' as listView;
 import 'tabs/counter.dart' as counterView;
-import 'tabs/animationsList.dart' as animationsList;
+import 'tabs/examplesList.dart' as examplesList;
 
 void main() {
   runApp(MyApp());
@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage>
           ),
           new Container(
             color: Colors.red,
-            child:animationsList.ListView()
+            child:examplesList.ListView()
           ),
         ],
         controller: _tabController,

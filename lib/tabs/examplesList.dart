@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
-import 'animations/first.dart' as first;
-import 'animations/second.dart' as second;
-import 'animations/third.dart' as third;
+import 'animations/01particle.dart' as particles;
+import 'animations/02logo.dart' as logo;
+import 'animations/03chart.dart' as chart;
 
 class ListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('First Route'),
+        title: Text('Gists'),
       ),
       body: Center(
         child: Column(
             children:[
               RaisedButton(
-                child: Text('Simple animation'),
+                child: Text('Particles'),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => first.Page()),
+                    MaterialPageRoute(builder: (context) => particles.Page()),
                   );
                 },
               ),
               RaisedButton(
-                child: Text('Simple animation #2'),
+                child: Text('Logo fade'),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => second.LogoApp()),
+                    MaterialPageRoute(builder: (context) => logo.LogoApp()),
                   );
                 },
               ),
@@ -36,10 +36,10 @@ class ListView extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => third.ChartPage()),
+                    MaterialPageRoute(builder: (context) => chart.ChartPage()),
                   );
                 },
-              ),
+              )
             ]
         )
       ),
