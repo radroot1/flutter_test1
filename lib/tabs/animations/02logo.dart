@@ -31,13 +31,18 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
-        height: animation.value,
-        width: animation.value,
-        child: FlutterLogo(),
+    return new Scaffold(
+      appBar: AppBar(
+        title: Text('Main Screen'),
       ),
+      body: Center(
+        child: Container(
+          margin: EdgeInsets.symmetric(vertical: 10),
+          height: animation.value,
+          width: animation.value,
+          child: FlutterLogo(),
+        ),
+      )
     );
   }
 

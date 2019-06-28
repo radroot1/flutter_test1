@@ -9,6 +9,9 @@ class Page extends StatelessWidget {
   Widget build(BuildContext context) {
     assert(debugCheckHasMediaQuery(context));
     return new Scaffold(
+      appBar: AppBar(
+        title: Text('Main Screen'),
+      ),
       body: new DemoBody(
         screenSize: MediaQuery.of(context).size,
       ),
