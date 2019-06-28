@@ -8,69 +8,65 @@ import 'dart:convert';
 class Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Startua Name Generator',
-      home: MyStatefulWidget(),
+    return new MaterialApp(
+      title: "Number Count",
+      theme: new ThemeData(
+          primarySwatch: Colors.blueGrey
+      ),
+      home: new NumberCountDemo(),
     );
   }
 }
-
-class MyStatefulWidget extends StatefulWidget {
-  MyStatefulWidget({Key key, this.title}) : super(key: key);
-  final String title;
-
+class NumberCountDemo extends StatefulWidget {
   @override
-  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+  _NumberCountDemoState createState() => new _NumberCountDemoState();
+
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  bool showtext=true;
-  bool toggleState=true;
-  Timer t2;
-
-  void toggleBlinkState(){
-    setState((){
-      toggleState=!toggleState;
-    });
-    var twenty = const Duration(milliseconds: 1000);
-    if(toggleState==false) {
-      t2 = Timer.periodic(twenty, (Timer t) {
-        toggleShowText();
-      });
-    } else {
-      t2.cancel();
-    }
-  }
-
-  void toggleShowText(){
-    setState((){
-      showtext=!showtext;
-    });
-  }
-
+class _NumberCountDemoState extends State<NumberCountDemo> {
+  int _n = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            (showtext
-                ?(Text('This execution will be done before you can blink.'))
-                :(Container())
-            ),
-            Padding(
-                padding: EdgeInsets.only(top: 70.0),
-                child: RaisedButton(
-                    onPressed: toggleBlinkState,
-                    child: (toggleState
-                        ?( Text('Blink'))
-                        :(Text('Stop Blinking'))
-                    )
-                )
-            )
-          ],
+    return new Scaffold(
+      appBar: new AppBar(title: new Text("Number Count")
+      ),
+      body: new Container(
+        child: new Center(
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              new FloatingActionButton(
+                onPressed: add,
+                child: new Icon(Icons.add, color: Colors.black,),
+                backgroundColor: Colors.white,),
+
+              new Text('$_n',
+                  style: new TextStyle(fontSize: 60.0)),
+
+              new FloatingActionButton(
+                onPressed: minus,
+                child: new Icon(
+                    const IconData(0xe15b, fontFamily: 'MaterialIcons'),
+                    color: Colors.black),
+                backgroundColor: Colors.white,),
+            ],
+          ),
         ),
       ),
     );
   }
+  void add() {
+    setState(() {
+      _n++;
+    });
+  }
+  void minus() {
+    setState(() {
+      if (_n != 0)
+        _n--;
+    });
+  }
+
+
 }
+
