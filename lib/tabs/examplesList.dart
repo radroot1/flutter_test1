@@ -3,6 +3,7 @@ import 'animations/01particle.dart' as particles;
 import 'animations/02logo.dart' as logo;
 import 'animations/03chart.dart' as chart;
 import 'animations/04hero.dart' as hero;
+import 'animations/05heroAnimation.dart' as heroA;
 
 class ListView extends StatelessWidget {
   @override
@@ -49,7 +50,16 @@ class ListView extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => hero.HeroApp()),
                   );
                 },
-              )
+              ),
+              RaisedButton(
+                child: Text('Hero animatiobn'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => heroA.HeroAnimation()),
+                  );
+                },
+              ),
             ]
         )
       ),
